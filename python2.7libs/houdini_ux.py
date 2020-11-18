@@ -21,7 +21,48 @@ import toolutils
   This is intended to sort of mimic the UX behaviour of Nuke's viewer
   shortuts. (--> 1, 2, 3)
 
+- **parent** & **unparent** selected objects
+
+- **reset Transforms** for selected objects
+
+- **walk hierarchy**  (up, down, left, right)
+
+
 """
+
+# -----------------------------------------------------------------------------
+def walkHierarchy(mode='up'):
+    """
+    """
+    selected = [node for node in hou.selectedNodes()
+                if node.type().category().name() == 'Object']
+    result = []
+
+    for item in selected:
+        if mode == 'up':
+            parent = item.input(0)
+            if parent:
+                result.append(parent)
+        elif mode == 'down':
+            outputs = item.outputs()
+            if len(outputs):
+                result.append(outputs[0])
+        else:
+            parent = item.input(0)
+            if parent:
+                siblings = parent.outputs()
+                index = siblings.index(item)
+                if mode == 'right':
+                    index = (index + 1) % len(siblings)
+                elif mode == 'left':
+                    index = (index - 1) % len(siblings)
+                result.append(siblings[index])
+
+    if len(result):
+        for item in selected:
+            item.setSelected(False)
+        for item in result:
+            item.setSelected(True)
 
 # -----------------------------------------------------------------------------
 def resetTransform():

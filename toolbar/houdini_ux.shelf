@@ -16,6 +16,10 @@
     <memberTool name="hux_parent"/>
     <memberTool name="hux_unparent"/>
     <memberTool name="hux_resetTransform"/>
+    <memberTool name="hux_walk_up"/>
+    <memberTool name="hux_walk_down"/>
+    <memberTool name="hux_walk_right"/>
+    <memberTool name="hux_walk_left"/>
   </toolshelf>
 
   <tool name="hux_toggleDisplayFlags" label="toggle display flags" icon="PLASMA_App">
@@ -91,4 +95,33 @@ import imp; imp.reload(hux)
 
 hux.resetTransform()]]></script>
   </tool>
+
+  <tool name="hux_walk_down" label="Walk Down" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.walkHierarchy(mode='down')]]></script>
+  </tool>
+
+  <tool name="hux_walk_up" label="Walk Up" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.walkHierarchy(mode='up')]]></script>
+  </tool>
+
+  <tool name="hux_walk_right" label="Walk Right" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.walkHierarchy(mode='right')]]></script>
+  </tool>
+
+  <tool name="hux_walk_left" label="Walk Left" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.walkHierarchy(mode='left')]]></script>
+  </tool>
+
 </shelfDocument>

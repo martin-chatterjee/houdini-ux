@@ -24,6 +24,8 @@
 
 - **reset Transform** of selected objects
 
+- **walk hierarchy**  (up, down, left, right)
+
 <br/>
 
 ### Installation:
@@ -41,12 +43,20 @@
 
 ### My Hotkey suggestions:
 - **toggleFullScreen**      : F11
+
 - **toggleDisplayFlags**    : Alt+H
 - **isolateSelection**      : Alt+I
+
 - **quickDisplay Clear**    : Ctrl+`
 - **quickDisplay A**        : Ctrl+F1
 - **quickDisplay B**        : Ctrl+F2
 - **quickDisplay C**        : Ctrl+F3
+
 - **parent**                : Alt+P
 - **unparent**              : Shift+P
 - **reset Transform**       : Alt+R
+
+- **walk up**               : Alt+Up
+- **walk down**             : Alt+Down
+- **walk left**             : Alt+Left
+- **walk right**            : Alt+Right
