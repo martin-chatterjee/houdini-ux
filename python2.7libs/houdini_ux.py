@@ -93,6 +93,7 @@ def parent():
     children = selected[:-1]
 
     for child in children:
+        child.parm('keeppos').set(True)
         child.setInput(0, parent)
 
     parent.setSelected(False)
@@ -106,6 +107,7 @@ def unparent():
                 if node.type().category().name() == 'Object']
 
     for node in selected:
+        node.parm('keeppos').set(True)
         node.setInput(0, None)
 
 
