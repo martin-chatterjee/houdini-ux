@@ -1,6 +1,9 @@
 
 # ![headline](logo.png)
 
+<br/>
+<br/>
+
 ### A collection of **Houdini UX Helpers**:
 
 - **toggleFullScreen**:
@@ -21,3 +24,29 @@
 
 - **reset Transform** of selected objects
 
+<br/>
+
+### Installation:
+
+- copy ``packages/houdini_ux.json`` into your ``$HFS/packages`` Folder.
+- update the **path** inside the ``houdini_ux.json`` so that it points to this repo.
+- start Houdini
+- verify that the package got picked up:
+    - in a **Python Shell**:  ``import houdini_ux; print(houdini_ux)``
+- display the **houdiniUX** shelf
+- add **Hotkeys** to all shelf items.
+
+
+<br/>
+
+### My Hotkey suggestions:
+- **toggleFullScreen**      : F11
+- **toggleDisplayFlags**    : Alt+H
+- **isolateSelection**      : Alt+I
+- **quickDisplay Clear**    : Ctrl+`
+- **quickDisplay A**        : Ctrl+F1
+- **quickDisplay B**        : Ctrl+F2
+- **quickDisplay C**        : Ctrl+F3
+- **parent**                : Alt+P
+- **unparent**              : Shift+P
+- **reset Transform**       : Alt+R
