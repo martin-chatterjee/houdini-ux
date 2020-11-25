@@ -31,6 +31,24 @@ import toolutils
 """
 
 # -----------------------------------------------------------------------------
+def selectHierarchy():
+    """
+    """
+    selected = [node for node in hou.selectedNodes()
+                if node.type().category().name() == 'Object']
+
+    def _selectRecursively(node):
+        """
+        """
+        node.setSelected(True)
+        for child in node.outputs():
+            _selectRecursively(child)
+
+    for node in selected:
+        _selectRecursively(node)
+
+
+# -----------------------------------------------------------------------------
 def preparePickwalking():
     """
     """

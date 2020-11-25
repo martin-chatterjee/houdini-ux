@@ -13,6 +13,7 @@
     <memberTool name="hux_quickdisplay_a"/>
     <memberTool name="hux_quickdisplay_b"/>
     <memberTool name="hux_quickdisplay_c"/>
+    <memberTool name="hux_select_hierarchy"/>
     <memberTool name="hux_parent"/>
     <memberTool name="hux_unparent"/>
     <memberTool name="hux_resetTransform"/>
@@ -78,6 +79,13 @@ hux.quickDisplay('C')]]></script>
 
   <tool name="tool_1" label="New Tool" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[]]></script>
+  </tool>
+
+  <tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.selectHierarchy()]]></script>
   </tool>
 
   <tool name="hux_parent" label="Parent" icon="houdini_ux.png">
