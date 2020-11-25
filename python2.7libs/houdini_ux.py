@@ -25,13 +25,75 @@ import toolutils
 
 - **reset Transforms** for selected objects
 
-- **walk hierarchy**  (up, down, left, right)
+- **pickwalking**  (up, down, left, right)
 
 
 """
 
 # -----------------------------------------------------------------------------
-def walkHierarchy(mode='up'):
+def preparePickwalking():
+    """
+    """
+    selected = [node for node in hou.selectedNodes()
+                if node.type().category().name() == 'Object']
+
+    for node in selected:
+        _ensureParm(node, 'pw_up', 'Up', folder_name='pickwalking')
+        _ensureParm(node, 'pw_right', 'Right', folder_name='pickwalking')
+        _ensureParm(node, 'pw_down', 'Down', folder_name='pickwalking')
+        _ensureParm(node, 'pw_left', 'Left', folder_name='pickwalking')
+
+# -----------------------------------------------------------------------------
+def _ensureParm(node,
+                parm_name,
+                label_name,
+                parm_start_value=None,
+                folder_name=None):
+    """
+    """
+    parm = node.parm(parm_name)
+
+    if not parm:
+        folder = _ensureParmFolder(node,
+                                   folder_name=folder_name)
+
+        ptg = node.parmTemplateGroup()
+        parm_template = None
+
+        parm_template = hou.StringParmTemplate(parm_name, label_name, 1)
+        parm_template.setStringType(hou.stringParmType.NodeReference)
+        if parm_start_value:
+            parm_template.setDefaultValue((parm_start_value,))
+
+        if parm_template:
+            ptg.appendToFolder(folder, parm_template)
+            node.setParmTemplateGroup(ptg)
+            parm = node.parm(parm_name)
+            if parm_start_value:
+                parm.set(parm_start_value)
+
+    return parm
+
+
+# -----------------------------------------------------------------------------
+def _ensureParmFolder(node, folder_name):
+    """
+    """
+    ptg = node.parmTemplateGroup()
+    folder = ptg.findFolder(folder_name)
+    if not folder:
+        folder = hou.FolderParmTemplate(name='fld_{}'.format(folder_name.lower()),
+                                        label=folder_name)
+        ptg.append(folder)
+        node.setParmTemplateGroup(ptg)
+        ptg = node.parmTemplateGroup()
+        folder = ptg.findFolder(folder_name)
+
+    return folder
+
+
+# -----------------------------------------------------------------------------
+def pickWalk(mode='up', replace=True):
     """
     """
     selected = [node for node in hou.selectedNodes()
@@ -39,30 +101,50 @@ def walkHierarchy(mode='up'):
     result = []
 
     for item in selected:
-        if mode == 'up':
-            parent = item.input(0)
-            if parent:
-                result.append(parent)
-        elif mode == 'down':
-            outputs = item.outputs()
-            if len(outputs):
-                result.append(outputs[0])
+        pickwalk = item.parm('pw_{}'.format(mode))
+        if pickwalk:
+            # target_path = pickwalk.eval()
+            target = item.node(pickwalk.eval())
+            if target:
+                result.append(target)
+                if replace:
+                    item.setSelected(False)
         else:
-            parent = item.input(0)
-            if parent:
-                siblings = parent.outputs()
-                index = siblings.index(item)
-                if mode == 'right':
-                    index = (index + 1) % len(siblings)
-                elif mode == 'left':
-                    index = (index - 1) % len(siblings)
-                result.append(siblings[index])
+            _walkHierarchy(item, mode, result, replace)
 
-    if len(result):
-        for item in selected:
+    for item in result:
+        item.setSelected(True)
+
+
+# -----------------------------------------------------------------------------
+def _walkHierarchy(item, mode, result, replace):
+    """
+    """
+    target = None
+
+    if mode == 'up':
+        parent = item.input(0)
+        if parent:
+            target = parent
+    elif mode == 'down':
+        outputs = item.outputs()
+        if len(outputs):
+            target = outputs[0]
+    else:
+        parent = item.input(0)
+        if parent:
+            siblings = parent.outputs()
+            index = siblings.index(item)
+            if mode == 'right':
+                index = (index + 1) % len(siblings)
+            elif mode == 'left':
+                index = (index - 1) % len(siblings)
+            target = siblings[index]
+
+    if target:
+        if replace:
             item.setSelected(False)
-        for item in result:
-            item.setSelected(True)
+        result.append(target)
 
 # -----------------------------------------------------------------------------
 def resetTransform():

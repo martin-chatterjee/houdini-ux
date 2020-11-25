@@ -24,7 +24,8 @@
 
 - **reset Transform** of selected objects
 
-- **walk hierarchy**  (up, down, left, right)
+- **pickwalking**  (up, down, left, right)
+
 
 <br/>
 
@@ -42,6 +43,19 @@
 <br/>
 
 ### My Hotkey suggestions:
+
+
+**Move these Vanilla Hotkeys for Animation Control:**
+
+- Play Forward                UpArrow     -->     Alt+V
+- Step Forward One            RightArrow  -->     Alt+.
+- Step Backward One           LeftArrow   -->     Alt+,
+- Jump To Previous Keyframe               -->     ,
+- Jump To Next Keyframe                   -->     .
+
+
+**Then set houdini-ux hotkeys (these are my suggestions):**
+
 - **toggleFullScreen**      : F11
 
 - **toggleDisplayFlags**    : Alt+H
@@ -56,7 +70,12 @@
 - **unparent**              : Shift+P
 - **reset Transform**       : Alt+R
 
-- **walk up**               : Alt+Up
-- **walk down**             : Alt+Down
-- **walk left**             : Alt+Left
-- **walk right**            : Alt+Right
+- **Pick Walk up**               : Up
+- **Pick Walk down**             : Down
+- **Pick Walk left**             : Left
+- **Pick Walk right**            : Right
+
+- **Pick Walk Add up**               : Shift+Up
+- **Pick Walk Add down**             : Shift+Down
+- **Pick Walk Add left**             : Shift+Left
+- **Pick Walk Add right**            : Shift+Right

@@ -16,112 +16,151 @@
     <memberTool name="hux_parent"/>
     <memberTool name="hux_unparent"/>
     <memberTool name="hux_resetTransform"/>
-    <memberTool name="hux_walk_up"/>
-    <memberTool name="hux_walk_down"/>
-    <memberTool name="hux_walk_right"/>
-    <memberTool name="hux_walk_left"/>
+    <memberTool name="hux_prep_pickwalking"/>
+    <memberTool name="hux_pickwalk_up"/>
+    <memberTool name="hux_pickwalk_right"/>
+    <memberTool name="hux_pickwalk_down"/>
+    <memberTool name="hux_pickwalk_left"/>
+    <memberTool name="hux_pickwalkadd_up"/>
+    <memberTool name="hux_pickwalkadd_right"/>
+    <memberTool name="hux_pickwalkadd_down"/>
+    <memberTool name="hux_pickwalkadd_left"/>
   </toolshelf>
 
-  <tool name="hux_toggleDisplayFlags" label="toggle display flags" icon="PLASMA_App">
+  <tool name="hux_toggleDisplayFlags" label="toggle display flags" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.toggleObjectDisplay()]]></script>
   </tool>
 
-  <tool name="hux_toggleFullScreen" label="toggle full screen" icon="PLASMA_App">
+  <tool name="hux_toggleFullScreen" label="toggle full screen" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.toggleFullScreen()]]></script>
   </tool>
 
-  <tool name="hux_isolateSelection" label="isolate selection" icon="PLASMA_App">
+  <tool name="hux_isolateSelection" label="isolate selection" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.isolateSelection()]]></script>
   </tool>
 
-  <tool name="hux_quickdisplay_a" label="QuickDisplay A" icon="PLASMA_App">
+  <tool name="hux_quickdisplay_a" label="QuickDisplay A" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.quickDisplay('A')]]></script>
   </tool>
 
-  <tool name="hux_quickdisplay_b" label="QuickDisplay B" icon="PLASMA_App">
+  <tool name="hux_quickdisplay_b" label="QuickDisplay B" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.quickDisplay('B')]]></script>
   </tool>
 
-  <tool name="hux_quickdisplay_clear" label="QuickDisplay Clear" icon="PLASMA_App">
+  <tool name="hux_quickdisplay_clear" label="QuickDisplay Clear" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.clearQuickDisplay()]]></script>
   </tool>
 
-  <tool name="hux_quickdisplay_c" label="QuickDisplay C" icon="PLASMA_App">
+  <tool name="hux_quickdisplay_c" label="QuickDisplay C" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.quickDisplay('C')]]></script>
   </tool>
 
-  <tool name="tool_1" label="New Tool" icon="PLASMA_App">
+  <tool name="tool_1" label="New Tool" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[]]></script>
   </tool>
 
-  <tool name="hux_parent" label="Parent" icon="PLASMA_App">
+  <tool name="hux_parent" label="Parent" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.parent()]]></script>
   </tool>
 
-  <tool name="hux_unparent" label="unparent" icon="PLASMA_App">
+  <tool name="hux_unparent" label="unparent" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.unparent()]]></script>
   </tool>
 
-  <tool name="hux_resetTransform" label="Reset Transform" icon="PLASMA_App">
+  <tool name="hux_resetTransform" label="Reset Transform" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
 hux.resetTransform()]]></script>
   </tool>
 
-  <tool name="hux_walk_down" label="Walk Down" icon="PLASMA_App">
+  <tool name="hux_pickwalk_up" label="Pick Walk Up" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+hux.pickWalk(mode='up', replace=True)]]></script>
+  </tool>
+
+  <tool name="hux_prep_pickwalking" label="Prep Pick Walking" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+hux.preparePickwalking()]]></script>
+  </tool>
+
+<tool name="hux_pickwalk_right" label="Pick Walk Right" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
-hux.walkHierarchy(mode='down')]]></script>
+hux.pickWalk(mode='right', replace=True)]]></script>
   </tool>
 
-  <tool name="hux_walk_up" label="Walk Up" icon="PLASMA_App">
+  <tool name="hux_pickwalk_down" label="Pick Walk Down" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
-hux.walkHierarchy(mode='up')]]></script>
+hux.pickWalk(mode='down', replace=True)]]></script>
   </tool>
 
-  <tool name="hux_walk_right" label="Walk Right" icon="PLASMA_App">
+  <tool name="hux_pickwalk_left" label="Pick Walk Left" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
-hux.walkHierarchy(mode='right')]]></script>
+hux.pickWalk(mode='left', replace=True)]]></script>
   </tool>
 
-  <tool name="hux_walk_left" label="Walk Left" icon="PLASMA_App">
+
+  <tool name="hux_pickwalkadd_up" label="Pick Walk Add Up" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+hux.pickWalk(mode='up', replace=False)]]></script>
+  </tool>
+
+<tool name="hux_pickwalkadd_right" label="Pick Walk Add Right" icon="houdini_ux.png">
     <script scriptType="python"><![CDATA[import houdini_ux as hux
 import imp; imp.reload(hux)
 
-hux.walkHierarchy(mode='left')]]></script>
+hux.pickWalk(mode='right', replace=False)]]></script>
   </tool>
+
+  <tool name="hux_pickwalkadd_down" label="Pick Walk Add Down" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.pickWalk(mode='down', replace=False)]]></script>
+  </tool>
+
+  <tool name="hux_pickwalkadd_left" label="Pick Walk Add Left" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[import houdini_ux as hux
+import imp; imp.reload(hux)
+
+hux.pickWalk(mode='left', replace=False)]]></script>
+  </tool>
+
 
 </shelfDocument>
