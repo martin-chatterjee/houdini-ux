@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2020, Martin Chatterjee. All rights reserved.
+# Copyright (c) 2020-2022, Martin Chatterjee. All rights reserved.
+# Licensed under MIT License (--> LICENSE)
 # -----------------------------------------------------------------------------
+
 import hou
 import toolutils
 
