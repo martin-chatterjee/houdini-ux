@@ -1,0 +1,12 @@
+{
+    "path": "$HUX_ROOT",
+    "load_package_once": true,
+    "env": [
+        {
+            "HUX_ROOT": "/path/to/houdini-ux"
+        },
+        {
+            "PYTHONPATH": "$HUX_ROOT/python"
+        }
+    ]
+}
