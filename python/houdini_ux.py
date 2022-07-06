@@ -36,7 +36,7 @@ import toolutils
 
 
 # -----------------------------------------------------------------------------
-def isolateSelection():
+def isolate_selection():
     """Isolates the visibility of all currently selected Object-level nodes
     in all viewports and cameras.
 
@@ -77,11 +77,11 @@ def isolateSelection():
         flash_msg = "Display All"
     viewer = toolutils.sceneViewer()
     viewer.flashMessage("houdini_ux.png", flash_msg, 1.0)
-    _ensureViewportMsg(msg)
+    _ensure_viewport_msg(msg)
 
 
 # -----------------------------------------------------------------------------
-def quickDisplay(slot):
+def quick_display(slot):
     """Stores the currently selected first node as QuickDisplay identified
     by `slot`.
 
@@ -99,9 +99,9 @@ def quickDisplay(slot):
     ]
     target = selected_nodes[0] if len(selected_nodes) else None
     if target:
-        _storeQuickDisplayNode(path, slot, target)
+        _store_quick_display_node(path, slot, target)
 
-    stored = _getStoredQuickDisplayNode(path, slot)
+    stored = _get_stored_quick_display_node(path, slot)
     if stored:
         stored.setDisplayFlag(True)
         stored.setRenderFlag(True)
@@ -112,14 +112,14 @@ def quickDisplay(slot):
 
 
 # -----------------------------------------------------------------------------
-def clearQuickDisplay(full=False):
+def clear_quick_display(full=False):
     """Clears the stored QuickDisplay nodes."""
     if full:
         hou.session.quick_display_storage = {}
     else:
         viewer = toolutils.sceneViewer()
         path = viewer.pwd().path()
-        storage = _getQuickDisplayStorage(path)
+        storage = _get_quick_display_storage(path)
         storage.clear()
         comment = "QuickDisplay"
         for node in hou.node(path).children():
@@ -130,7 +130,7 @@ def clearQuickDisplay(full=False):
 
 
 # -----------------------------------------------------------------------------
-def toggleObjectDisplay():
+def toggle_object_display():
     """Toggles the visibility flag of all selected Object-level Nodes."""
     objects = [
         item
@@ -178,7 +178,7 @@ def unparent():
 
 
 # -----------------------------------------------------------------------------
-def resetTransform():
+def reset_transform():
     """ """
     selected = [
         node
@@ -196,7 +196,7 @@ def resetTransform():
 
 
 # -----------------------------------------------------------------------------
-def selectHierarchy():
+def select_hierarchy():
     """ """
     selected = [
         node
@@ -204,18 +204,18 @@ def selectHierarchy():
         if node.type().category().name() == "Object"
     ]
 
-    def _selectRecursively(node):
+    def _select_recursively(node):
         """ """
         node.setSelected(True)
         for child in node.outputs():
-            _selectRecursively(child)
+            _select_recursively(child)
 
     for node in selected:
-        _selectRecursively(node)
+        _select_recursively(node)
 
 
 # -----------------------------------------------------------------------------
-def preparePickwalking():
+def prepare_pickwalking():
     """ """
     selected = [
         node
@@ -224,14 +224,14 @@ def preparePickwalking():
     ]
 
     for node in selected:
-        _ensureParm(node, "pw_up", "Up", folder_name="pickwalking")
-        _ensureParm(node, "pw_right", "Right", folder_name="pickwalking")
-        _ensureParm(node, "pw_down", "Down", folder_name="pickwalking")
-        _ensureParm(node, "pw_left", "Left", folder_name="pickwalking")
+        _ensure_parm(node, "pw_up", "Up", folder_name="pickwalking")
+        _ensure_parm(node, "pw_right", "Right", folder_name="pickwalking")
+        _ensure_parm(node, "pw_down", "Down", folder_name="pickwalking")
+        _ensure_parm(node, "pw_left", "Left", folder_name="pickwalking")
 
 
 # -----------------------------------------------------------------------------
-def pickWalk(mode="up", replace=True):
+def pickwalk(mode="up", replace=True):
     """ """
     selected = [
         node
@@ -250,14 +250,14 @@ def pickWalk(mode="up", replace=True):
                 if replace:
                     item.setSelected(False)
         else:
-            _walkHierarchy(item, mode, result, replace)
+            _walk_hierarchy(item, mode, result, replace)
 
     for item in result:
         item.setSelected(True, show_asset_if_selected=True)
 
 
 # -----------------------------------------------------------------------------
-def toggleFullScreen():
+def toggle_fullscreen():
     """Toggles the Full Screen state of the Houdini Main Window."""
     mw = hou.qt.mainWindow()
     if mw.isFullScreen():
@@ -267,12 +267,12 @@ def toggleFullScreen():
 
 
 # -----------------------------------------------------------------------------
-def _ensureParm(node, parm_name, label_name, parm_start_value=None, folder_name=None):
+def _ensure_parm(node, parm_name, label_name, parm_start_value=None, folder_name=None):
     """ """
     parm = node.parm(parm_name)
 
     if not parm:
-        folder = _ensureParmFolder(node, folder_name=folder_name)
+        folder = _ensure_parm_folder(node, folder_name=folder_name)
 
         ptg = node.parmTemplateGroup()
         parm_template = None
@@ -293,7 +293,7 @@ def _ensureParm(node, parm_name, label_name, parm_start_value=None, folder_name=
 
 
 # -----------------------------------------------------------------------------
-def _ensureParmFolder(node, folder_name):
+def _ensure_parm_folder(node, folder_name):
     """ """
     ptg = node.parmTemplateGroup()
     folder = ptg.findFolder(folder_name)
@@ -310,7 +310,7 @@ def _ensureParmFolder(node, folder_name):
 
 
 # -----------------------------------------------------------------------------
-def _walkHierarchy(item, mode, result, replace):
+def _walk_hierarchy(item, mode, result, replace):
     """ """
     target = None
 
@@ -340,7 +340,7 @@ def _walkHierarchy(item, mode, result, replace):
 
 
 # -----------------------------------------------------------------------------
-def _ensureViewportMsg(msg):
+def _ensure_viewport_msg(msg):
     """ """
     cameras = hou.nodeType(hou.objNodeTypeCategory(), "cam").instances()
     for cam in cameras:
@@ -364,7 +364,7 @@ def _ensureViewportMsg(msg):
 
 
 # -----------------------------------------------------------------------------
-def _getQuickDisplayStorage(path):
+def _get_quick_display_storage(path):
     """ """
     if not hasattr(hou.session, "quick_display_storage"):
         hou.session.quick_display_storage = {}
@@ -375,9 +375,9 @@ def _getQuickDisplayStorage(path):
 
 
 # -----------------------------------------------------------------------------
-def _storeQuickDisplayNode(path, slot, node):
+def _store_quick_display_node(path, slot, node):
     """ """
-    storage = _getQuickDisplayStorage(path)
+    storage = _get_quick_display_storage(path)
     storage[slot] = node.path()
 
     comment = "QuickDisplay: {}".format(slot)
@@ -389,10 +389,10 @@ def _storeQuickDisplayNode(path, slot, node):
 
 
 # -----------------------------------------------------------------------------
-def _getStoredQuickDisplayNode(path, label):
+def _get_stored_quick_display_node(path, label):
     """ """
     node = None
-    storage = _getQuickDisplayStorage(path)
+    storage = _get_quick_display_storage(path)
     stored_path = storage.get(label, None)
     if stored_path:
         node = hou.node(stored_path)
