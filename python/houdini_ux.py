@@ -129,8 +129,8 @@ def quick_display(slot):
     QuickDisplay can only be used in a context with a data-flow paradigm such
     as SOP's.
     """
-    viewer = toolutils.sceneViewer()
-    path = viewer.pwd().path()
+    scene_viewer = toolutils.sceneViewer()
+    path = scene_viewer.pwd().path()
 
     # get first selected node in path
     selected_nodes = [
@@ -147,19 +147,24 @@ def quick_display(slot):
         stored.setDisplayFlag(True)
         stored.setRenderFlag(True)
         stored.setSelected(False)
-        viewer.flashMessage(
+        scene_viewer.flashMessage(
             "houdini_ux.png", "QuickDisplay {}: {}".format(slot, stored.name()), 1.0
         )
 
 
 # -----------------------------------------------------------------------------
 def clear_quick_display(full=False):
-    """Clears the stored QuickDisplay nodes."""
+    """Clears the stored QuickDisplay nodes.
+
+    If full is True, the full QuickDisplay storage gets cleared.
+    Otherwise only the storage for the current view gets cleared.
+
+    """
     if full:
         hou.session.quick_display_storage = {}
     else:
-        viewer = toolutils.sceneViewer()
-        path = viewer.pwd().path()
+        scene_viewer = toolutils.sceneViewer()
+        path = scene_viewer.pwd().path()
         storage = _get_quick_display_storage(path)
         storage.clear()
         comment = "QuickDisplay"
@@ -167,7 +172,55 @@ def clear_quick_display(full=False):
             if node.comment().startswith(comment):
                 node.setComment("")
 
-    viewer.flashMessage("houdini_ux.png", "QuickDisplay: cleared", 1.5)
+    scene_viewer.flashMessage("houdini_ux.png", "QuickDisplay: cleared", 1.5)
+
+
+# -----------------------------------------------------------------------------
+def _store_quick_display_node(path, slot, node):
+    """Stores `node` in QuickDisplay `slot` for `path`.
+
+    Also updates the node's comment to give a visual indication in the Network View.
+
+    """
+    storage = _get_quick_display_storage(path)
+    storage[slot] = node.path()
+
+    comment = "QuickDisplay: {}".format(slot)
+    for child in hou.node(path).children():
+        if child.comment() == comment:
+            child.setComment("")
+    node.setComment("QuickDisplay: {}".format(slot))
+    node.setGenericFlag(hou.nodeFlag.DisplayComment, True)
+
+
+# -----------------------------------------------------------------------------
+def _get_quick_display_storage(path):
+    """Retrieves and returns the QuickDisplay storage for `path`.
+
+    If no storage exists for `path`, it will get initialized to {}.
+
+    """
+    if not hasattr(hou.session, "quick_display_storage"):
+        hou.session.quick_display_storage = {}
+    storage = hou.session.quick_display_storage
+    if path not in storage:
+        storage[path] = {}
+    return storage[path]
+
+
+# -----------------------------------------------------------------------------
+def _get_stored_quick_display_node(path, slot):
+    """Retrieves and returns the stored QuickDisplay labeled `slot` for `path`.
+
+    Will return None if no node is stored.
+
+    """
+    node = None
+    storage = _get_quick_display_storage(path)
+    stored_path = storage.get(slot, None)
+    if stored_path:
+        node = hou.node(stored_path)
+    return node
 
 
 # -----------------------------------------------------------------------------
@@ -378,39 +431,3 @@ def _walk_hierarchy(item, mode, result, replace):
         if replace:
             item.setSelected(False)
         result.append(target)
-
-
-# -----------------------------------------------------------------------------
-def _get_quick_display_storage(path):
-    """ """
-    if not hasattr(hou.session, "quick_display_storage"):
-        hou.session.quick_display_storage = {}
-    storage = hou.session.quick_display_storage
-    if path not in storage:
-        storage[path] = {}
-    return storage[path]
-
-
-# -----------------------------------------------------------------------------
-def _store_quick_display_node(path, slot, node):
-    """ """
-    storage = _get_quick_display_storage(path)
-    storage[slot] = node.path()
-
-    comment = "QuickDisplay: {}".format(slot)
-    for child in hou.node(path).children():
-        if child.comment() == comment:
-            child.setComment("")
-    node.setComment("QuickDisplay: {}".format(slot))
-    node.setGenericFlag(hou.nodeFlag.DisplayComment, True)
-
-
-# -----------------------------------------------------------------------------
-def _get_stored_quick_display_node(path, label):
-    """ """
-    node = None
-    storage = _get_quick_display_storage(path)
-    stored_path = storage.get(label, None)
-    if stored_path:
-        node = hou.node(stored_path)
-    return node
