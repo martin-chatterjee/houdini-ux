@@ -30,6 +30,7 @@
   Toggles the Full Screen state of the Houdini Main Window.
 
 """
+import os
 
 import hou
 import toolutils
@@ -244,35 +245,57 @@ def toggle_object_display():
 
 # -----------------------------------------------------------------------------
 def parent():
-    """ """
-    selected = [
+    """Parents all other selected object nodes to the last selected object node.
+
+    This effectively mimics Maya's parenting workflow in Houdini's 'obj' network.
+
+    Objects the live on another network level than the designated parent object
+    will **not** be parented.
+
+    """
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
     ]
-    if len(selected) < 2:
+    if len(selected_obj_nodes) < 2:
         return
 
-    parent = selected[-1]
-    children = selected[:-1]
+    parent = selected_obj_nodes[-1]
+    children = selected_obj_nodes[:-1]
+
+    parent_level = os.path.dirname(parent.path())
+    level_mismatch = False
 
     for child in children:
+        # Ignore all children that are not on the same network level as parent.
+        child_level = os.path.dirname(child.path())
+        if child_level != parent_level:
+            level_mismatch = True
+            continue
         child.parm("keeppos").set(True)
         child.setInput(0, parent)
 
+    if level_mismatch:
+        flash_msg = (
+            "Not all objects could be parented, "
+            "as they live in different network depths."
+        )
+        scene_viewer = toolutils.sceneViewer()
+        scene_viewer.flashMessage("houdini_ux.png", flash_msg, 3.0)
     parent.setSelected(False)
 
 
 # -----------------------------------------------------------------------------
 def unparent():
-    """ """
-    selected = [
+    """Unparents all selected object nodes."""
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
     ]
 
-    for node in selected:
+    for node in selected_obj_nodes:
         node.parm("keeppos").set(True)
         node.setInput(0, None)
 
