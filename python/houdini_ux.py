@@ -83,7 +83,11 @@ def _is_isolate_selection_active():
 
 # -----------------------------------------------------------------------------
 def _update_object_isolation_in_viewports(visibility_mask, camera_viewport_message):
-    """Updates the visibility mask for all viewports and displays HUD message in all cameras."""
+    """Updates the visibility mask for all viewports.
+
+    Also displays HUD message in all cameras.
+
+    """
     scene_viewer = toolutils.sceneViewer()
     for viewport in scene_viewer.viewports():
         viewport.settings().setVisibleObjects(visibility_mask)
