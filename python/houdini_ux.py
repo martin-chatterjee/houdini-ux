@@ -341,6 +341,16 @@ def select_hierarchy():
 
 
 # -----------------------------------------------------------------------------
+def toggle_fullscreen():
+    """Toggles the Full Screen state of the Houdini Main Window."""
+    main_window = hou.qt.mainWindow()
+    if main_window.isFullScreen():
+        main_window.showMaximized()
+    else:
+        main_window.showFullScreen()
+
+
+# -----------------------------------------------------------------------------
 def prepare_pickwalking():
     """ """
     selected = [
@@ -380,16 +390,6 @@ def pickwalk(mode="up", replace=True):
 
     for item in result:
         item.setSelected(True, show_asset_if_selected=True)
-
-
-# -----------------------------------------------------------------------------
-def toggle_fullscreen():
-    """Toggles the Full Screen state of the Houdini Main Window."""
-    mw = hou.qt.mainWindow()
-    if mw.isFullScreen():
-        mw.showMaximized()
-    else:
-        mw.showFullScreen()
 
 
 # -----------------------------------------------------------------------------
