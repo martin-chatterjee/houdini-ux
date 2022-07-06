@@ -306,8 +306,8 @@ def unparent():
 
 # -----------------------------------------------------------------------------
 def reset_transform():
-    """ """
-    selected = [
+    """Resets the local transform of all selected object nodes."""
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
@@ -316,7 +316,7 @@ def reset_transform():
     identity = hou.Matrix4()
     identity.setToIdentity()
 
-    for item in selected:
+    for item in selected_obj_nodes:
         item.setParmTransform(identity)
         item.setPreTransform(identity)
         item.setParmPivotTransform(identity)
