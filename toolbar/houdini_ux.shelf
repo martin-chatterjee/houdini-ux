@@ -35,7 +35,7 @@ import imp
 imp.reload(hux)
 
 hux.isolate_selection()
-                        ]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_quickdisplay_clear" label="QuickDisplay Clear" icon="houdini_ux.png">
@@ -45,7 +45,7 @@ import imp
 imp.reload(hux)
 
 hux.clear_quick_display()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_quickdisplay_a" label="QuickDisplay A" icon="houdini_ux.png">
@@ -55,7 +55,7 @@ import imp
 imp.reload(hux)
 
 hux.quick_display("A")
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_quickdisplay_b" label="QuickDisplay B" icon="houdini_ux.png">
@@ -65,7 +65,7 @@ import imp
 imp.reload(hux)
 
 hux.quick_display("B")
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_quickdisplay_c" label="QuickDisplay C" icon="houdini_ux.png">
@@ -75,7 +75,7 @@ import imp
 imp.reload(hux)
 
 hux.quick_display("C")
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
@@ -85,7 +85,7 @@ import imp
 imp.reload(hux)
 
 hux.toggle_object_display()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_parent" label="Parent" icon="houdini_ux.png">
@@ -95,7 +95,7 @@ import imp
 imp.reload(hux)
 
 hux.parent()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_unparent" label="Unparent" icon="houdini_ux.png">
@@ -105,7 +105,7 @@ import imp
 imp.reload(hux)
 
 hux.unparent()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_reset_transform" label="Reset Transform" icon="houdini_ux.png">
@@ -115,7 +115,7 @@ import imp
 imp.reload(hux)
 
 hux.reset_transform()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
@@ -125,7 +125,7 @@ import imp
 imp.reload(hux)
 
 hux.select_hierarchy()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_prep_pickwalking" label="Prep Pick Walking" icon="houdini_ux.png">
@@ -135,7 +135,7 @@ import imp
 imp.reload(hux)
 
 hux.prepare_pickwalking()
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalk_up" label="Pick Walk Up" icon="houdini_ux.png">
@@ -145,7 +145,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="up", replace=True)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalk_right" label="Pick Walk Right" icon="houdini_ux.png">
@@ -155,7 +155,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="right", replace=True)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalk_down" label="Pick Walk Down" icon="houdini_ux.png">
@@ -165,7 +165,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="down", replace=True)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalk_left" label="Pick Walk Left" icon="houdini_ux.png">
@@ -175,7 +175,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="left", replace=True)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalkadd_up" label="Pick Walk Add Up" icon="houdini_ux.png">
@@ -185,7 +185,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="up", replace=False)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalkadd_right" label="Pick Walk Add Right" icon="houdini_ux.png">
@@ -195,7 +195,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="right", replace=False)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalkadd_down" label="Pick Walk Add Down" icon="houdini_ux.png">
@@ -205,7 +205,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="down", replace=False)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_pickwalkadd_left" label="Pick Walk Add Left" icon="houdini_ux.png">
@@ -215,7 +215,7 @@ import imp
 imp.reload(hux)
 
 hux.pickwalk(mode="left", replace=False)
-			]]></script>
+      ]]></script>
   </tool>
 
   <tool name="hux_toggle_fullscreen" label="Toggle Full Screen" icon="houdini_ux.png">
@@ -225,6 +225,6 @@ import imp
 imp.reload(hux)
 
 hux.toggle_fullscreen()
-			]]></script>
+      ]]></script>
   </tool>
 </shelfDocument>
