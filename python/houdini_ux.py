@@ -225,14 +225,20 @@ def _get_stored_quick_display_node(path, slot):
 
 # -----------------------------------------------------------------------------
 def toggle_object_display():
-    """Toggles the visibility flag of all selected Object-level Nodes."""
-    objects = [
+    """Toggles the visibility flag of all selected Object-level Nodes.
+
+    - Each object's visibility will get toggled individually,
+      enabling 'A/B' visibility flipping.
+    - Selected objects can live anywhere in the scene hierarchy.
+
+    """
+    selected_objects = [
         item
         for item in hou.selectedNodes()
         if item.type().category().name() == "Object"
     ]
 
-    for node in objects:
+    for node in selected_objects:
         node.setDisplayFlag(not node.isDisplayFlagSet())
 
 
