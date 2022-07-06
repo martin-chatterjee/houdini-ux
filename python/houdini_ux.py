@@ -324,20 +324,19 @@ def reset_transform():
 
 # -----------------------------------------------------------------------------
 def select_hierarchy():
-    """ """
-    selected = [
+    """Selects the full child hierarchy of any selected object nodes."""
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
     ]
 
     def _select_recursively(node):
-        """ """
         node.setSelected(True)
         for child in node.outputs():
             _select_recursively(child)
 
-    for node in selected:
+    for node in selected_obj_nodes:
         _select_recursively(node)
 
 
