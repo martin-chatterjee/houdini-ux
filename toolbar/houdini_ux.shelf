@@ -34,7 +34,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.isolateSelection()
+hux.isolate_selection()
                         ]]></script>
   </tool>
 
@@ -44,7 +44,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.clearQuickDisplay()
+hux.clear_quick_display()
 			]]></script>
   </tool>
 
@@ -54,7 +54,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.quickDisplay("A")
+hux.quick_display("A")
 			]]></script>
   </tool>
 
@@ -64,7 +64,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.quickDisplay("B")
+hux.quick_display("B")
 			]]></script>
   </tool>
 
@@ -74,7 +74,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.quickDisplay("C")
+hux.quick_display("C")
 			]]></script>
   </tool>
 
@@ -84,7 +84,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.toggleObjectDisplay()
+hux.toggle_object_display()
 			]]></script>
   </tool>
 
@@ -114,7 +114,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.resetTransform()
+hux.reset_transform()
 			]]></script>
   </tool>
 
@@ -124,7 +124,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.selectHierarchy()
+hux.select_hierarchy()
 			]]></script>
   </tool>
 
@@ -134,7 +134,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.preparePickwalking()
+hux.prepare_pickwalking()
 			]]></script>
   </tool>
 
@@ -144,7 +144,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="up", replace=True)
+hux.pickwalk(mode="up", replace=True)
 			]]></script>
   </tool>
 
@@ -154,7 +154,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="right", replace=True)
+hux.pickwalk(mode="right", replace=True)
 			]]></script>
   </tool>
 
@@ -164,7 +164,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="down", replace=True)
+hux.pickwalk(mode="down", replace=True)
 			]]></script>
   </tool>
 
@@ -174,7 +174,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="left", replace=True)
+hux.pickwalk(mode="left", replace=True)
 			]]></script>
   </tool>
 
@@ -184,7 +184,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="up", replace=False)
+hux.pickwalk(mode="up", replace=False)
 			]]></script>
   </tool>
 
@@ -194,7 +194,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="right", replace=False)
+hux.pickwalk(mode="right", replace=False)
 			]]></script>
   </tool>
 
@@ -204,7 +204,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="down", replace=False)
+hux.pickwalk(mode="down", replace=False)
 			]]></script>
   </tool>
 
@@ -214,7 +214,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.pickWalk(mode="left", replace=False)
+hux.pickwalk(mode="left", replace=False)
 			]]></script>
   </tool>
 
@@ -224,7 +224,7 @@ import houdini_ux as hux
 import imp
 imp.reload(hux)
 
-hux.toggleFullScreen()
+hux.toggle_fullscreen()
 			]]></script>
   </tool>
 </shelfDocument>
