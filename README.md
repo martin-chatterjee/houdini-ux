@@ -1,8 +1,5 @@
 
-# ![headline](logo.png)
-
-<br/>
-<br/>
+# ![headline](docs/graphics/logo.png)
 
 ### A collection of **Houdini UX Helpers**:
 
@@ -26,24 +23,45 @@
 
 - **pickwalking**  (up, down, left, right)
 
-
+<br/>
 <br/>
 
-### Installation:
+## Installation
 
-- copy ``packages/houdini_ux.json`` into your ``$HFS/packages`` Folder.
-- update the **path** inside the ``houdini_ux.json`` so that it points to this repo.
-- start Houdini
-- verify that the package got picked up:
-    - in a **Python Shell**:  ``import houdini_ux; print(houdini_ux)``
-- display the **houdiniUX** shelf
-- add **Hotkeys** to all shelf items.
+1. **Download** this repo, **unzip** it and **rename** the top folder to `houdini-ux`:\
+   ![download-repo](docs/graphics/download-repo.png)\
+    _(→ Or just **clone it** of course, if you are git-savvy)_
+   <br/>
 
+2. **Copy** ``package_template/houdini_ux.json`` into your **home folder**: `$HOUDINI_USER_PREF_DIR/packages`.\
+   _(→ Or into [any other folder](https://www.sidefx.com/docs/houdini/ref/plugins.html#using_packages) where **Houdini package files** will get picked up.)_
+   <br/>
+
+3. **Update** the **`HUX_ROOT`** env variable defined inside this ``houdini_ux.json`` file **to your `houdini-ux` location**:\
+   ![headline](docs/graphics/package-json.png)
+   <br/>
+4. **Start** Houdini.
+   <br/>
+5. **Verify** that the package got picked up:
+   - in a **Python Shell** inside Houdini:\
+     ![python-shell](docs/graphics/python-shell.png)
+     ```python
+     >>> import houdini_ux
+     >>> print(houdini_ux)
+     <module 'houdini_ux' from '/path/to/houdini-ux/python/houdini_ux.py'>
+     ```
+6. **Display** the **houdini-ux** shelf.
+   <br/>
+7. **Add Hotkeys** to shelf items, as desired:\
+   ![edit-tool](docs/graphics/edit-tool.png)
+
+   ![edit-tool](docs/graphics/hotkey-tab.png)
+   <br/>
 
 <br/>
+<br/>
 
-### My Hotkey suggestions:
-
+## My Hotkey suggestions:
 
 **Move these Vanilla Hotkeys for Animation Control:**
 
