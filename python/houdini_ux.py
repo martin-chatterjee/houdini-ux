@@ -43,41 +43,82 @@ def isolate_selection():
     Acts as a toggle: If an isolation already exists it will remove it.
 
     """
-    scene_view = toolutils.sceneViewer()
-    viewport = scene_view.curViewport()
-    settings = viewport.settings()
+    visibility_mask = "*"
+    camera_viewport_message = ""
 
-    current_mask = settings.visibleObjects()
-    msg = ""
-    if current_mask != "*":
-        current_mask = "*"
-        msg = ""
-    else:
-        isolate_me = []
-        selected_object_nodes = [
-            item
+    is_active = _is_isolate_selection_active()
+
+    if not is_active:
+        selected_object_node_paths = [
+            item.path()
             for item in hou.selectedNodes()
             if item.type().category().name() == "Object"
         ]
-        for node in selected_object_nodes:
-            isolate_me.append(node.path())
-        current_mask = " ".join(isolate_me)
-        msg = "\n".join(isolate_me)
-        if msg != "":
-            msg = "\n\nISOLATED\n--------------\n" + msg
-        if current_mask == "":
-            current_mask = "*"
+        if len(selected_object_node_paths):
+            visibility_mask = " ".join(selected_object_node_paths)
+            message_lines = [
+                "",
+                "",
+                "ISOLATED",
+                "--------------",
+            ]
+            message_lines.extend(selected_object_node_paths)
+            camera_viewport_message = "\n".join(message_lines)
 
-    for viewport in scene_view.viewports():
-        viewport.settings().setVisibleObjects(current_mask)
+    _update_object_isolation_in_viewports(visibility_mask, camera_viewport_message)
+
+
+# -----------------------------------------------------------------------------
+def _is_isolate_selection_active():
+    """Returns True if 'Isolate Selection' is currently active."""
+    scene_viewer = toolutils.sceneViewer()
+    viewport = scene_viewer.curViewport()
+    settings = viewport.settings()
+    current_mask = settings.visibleObjects()
+    is_active = current_mask != "*"
+
+    return is_active
+
+
+# -----------------------------------------------------------------------------
+def _update_object_isolation_in_viewports(visibility_mask, camera_viewport_message):
+    """Updates the visibility mask for all viewports and displays HUD message in all cameras."""
+    scene_viewer = toolutils.sceneViewer()
+    for viewport in scene_viewer.viewports():
+        viewport.settings().setVisibleObjects(visibility_mask)
         viewport.draw()
+    flash_msg = "Display All" if visibility_mask == "*" else "Isolate Selection"
+    scene_viewer.flashMessage("houdini_ux.png", flash_msg, 1.0)
+    _show_message_in_cameras(camera_viewport_message)
 
-    flash_msg = "Isolate Selection"
-    if msg == "":
-        flash_msg = "Display All"
-    viewer = toolutils.sceneViewer()
-    viewer.flashMessage("houdini_ux.png", flash_msg, 1.0)
-    _ensure_viewport_msg(msg)
+
+# -----------------------------------------------------------------------------
+def _show_message_in_cameras(msg):
+    """Displays a HUD message in the top left corner of each camera viewport.
+
+    Unfortunately this type of HUD message seems to only be possible in actual
+    camera viewports at the moment.
+
+    """
+    cameras = hou.nodeType(hou.objNodeTypeCategory(), "cam").instances()
+    for cam in cameras:
+        ptg = cam.parmTemplateGroup()
+        folder = ptg.findFolder("Viewport Message")
+        if not folder:
+            folder = hou.FolderParmTemplate("folder", "Viewport Message")
+            ptg.append(folder)
+            cam.setParmTemplateGroup(ptg)
+        param = None
+        for item in folder.parmTemplates():
+            if item.name() == "vcomment":
+                param = item
+                break
+        if not param:
+            param = ptg.appendToFolder(
+                folder, hou.StringParmTemplate("vcomment", "vcomment", 1)
+            )
+            cam.setParmTemplateGroup(ptg)
+        cam.parm("vcomment").set(msg)
 
 
 # -----------------------------------------------------------------------------
@@ -337,30 +378,6 @@ def _walk_hierarchy(item, mode, result, replace):
         if replace:
             item.setSelected(False)
         result.append(target)
-
-
-# -----------------------------------------------------------------------------
-def _ensure_viewport_msg(msg):
-    """ """
-    cameras = hou.nodeType(hou.objNodeTypeCategory(), "cam").instances()
-    for cam in cameras:
-        ptg = cam.parmTemplateGroup()
-        folder = ptg.findFolder("Viewport Message")
-        if not folder:
-            folder = hou.FolderParmTemplate("folder", "Viewport Message")
-            ptg.append(folder)
-            cam.setParmTemplateGroup(ptg)
-        param = None
-        for item in folder.parmTemplates():
-            if item.name() == "vcomment":
-                param = item
-                break
-        if not param:
-            param = ptg.appendToFolder(
-                folder, hou.StringParmTemplate("vcomment", "vcomment", 1)
-            )
-            cam.setParmTemplateGroup(ptg)
-        cam.parm("vcomment").set(msg)
 
 
 # -----------------------------------------------------------------------------
