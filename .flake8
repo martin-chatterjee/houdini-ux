@@ -1,5 +1,4 @@
 [flake8]
-ignore = N802
 max-line-length = 88
 inline-quotes = double
 
