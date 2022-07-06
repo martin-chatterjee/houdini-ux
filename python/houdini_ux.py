@@ -352,14 +352,14 @@ def toggle_fullscreen():
 
 # -----------------------------------------------------------------------------
 def prepare_pickwalking():
-    """ """
-    selected = [
+    """Ensures that all pickwalking parms exist on all selected Object nodes."""
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
     ]
 
-    for node in selected:
+    for node in selected_obj_nodes:
         _ensure_parm(node, "pw_up", "Up", folder_name="pickwalking")
         _ensure_parm(node, "pw_right", "Right", folder_name="pickwalking")
         _ensure_parm(node, "pw_down", "Down", folder_name="pickwalking")
@@ -367,24 +367,34 @@ def prepare_pickwalking():
 
 
 # -----------------------------------------------------------------------------
-def pickwalk(mode="up", replace=True):
-    """ """
-    selected = [
+def pickwalk(mode, replace=True):
+    """Changes the current selection based on mode.
+
+    Accepts "right", "down", "left" and "up" as mode.
+
+    Respects optional pickwalking parms, and will walk the hierarchy otherwise.
+
+    If replace is False, then the pickwalk targets get added to
+    the current selection.
+
+    """
+    selected_obj_nodes = [
         node
         for node in hou.selectedNodes()
         if node.type().category().name() == "Object"
     ]
     result = []
 
-    for item in selected:
-        pickwalk = item.parm("pw_{}".format(mode))
-        if pickwalk:
-            # target_path = pickwalk.eval()
-            target = item.node(pickwalk.eval())
-            if target:
-                result.append(target)
-                if replace:
-                    item.setSelected(False)
+    for item in selected_obj_nodes:
+        pickwalk_target = None
+        pickwalk_parm = item.parm("pw_{}".format(mode))
+        if pickwalk_parm:
+            pickwalk_target = item.node(pickwalk_parm.eval())
+
+        if pickwalk_target:
+            result.append(pickwalk_target)
+            if replace:
+                item.setSelected(False)
         else:
             _walk_hierarchy(item, mode, result, replace)
 
@@ -394,7 +404,14 @@ def pickwalk(mode="up", replace=True):
 
 # -----------------------------------------------------------------------------
 def _ensure_parm(node, parm_name, label_name, parm_start_value=None, folder_name=None):
-    """ """
+    """Ensures that this parm exists on node.
+
+    If it does not exist it will get created.
+
+    Returns:
+        (parm) parm on node
+
+    """
     parm = node.parm(parm_name)
 
     if not parm:
@@ -420,7 +437,14 @@ def _ensure_parm(node, parm_name, label_name, parm_start_value=None, folder_name
 
 # -----------------------------------------------------------------------------
 def _ensure_parm_folder(node, folder_name):
-    """ """
+    """ "Ensures that this parm folder exists on node.
+
+    If it does not exist it will get created.
+
+    Returns:
+        parmFolder on node
+
+    """
     ptg = node.parmTemplateGroup()
     folder = ptg.findFolder(folder_name)
     if not folder:
@@ -437,7 +461,20 @@ def _ensure_parm_folder(node, folder_name):
 
 # -----------------------------------------------------------------------------
 def _walk_hierarchy(item, mode, result, replace):
-    """ """
+    """Changes the current selection based on hierarchy.
+
+    Will get called as a fallback by pickwalk() if no valid pickwalking parm
+    could be resolved.
+
+    Accepts "right", "down", "left" and "up" as mode.
+
+    "up" moves to the parent, "down" to the first child object node.
+    "left" and "right" move between siblings of the same parent.
+
+    If replace is False, then the targets get added to
+    the current selection.
+
+    """
     target = None
 
     if mode == "up":
