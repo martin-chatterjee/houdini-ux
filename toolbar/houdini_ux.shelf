@@ -7,17 +7,16 @@
 	a single file.
 	-->
 	<toolshelf name="houdini_ux" label="houdini-ux">
-		<memberTool name="hux_toggle_fullscreen" />
-		<memberTool name="hux_toggle_display_flags" />
 		<memberTool name="hux_isolate_selection" />
 		<memberTool name="hux_quickdisplay_clear" />
 		<memberTool name="hux_quickdisplay_a" />
 		<memberTool name="hux_quickdisplay_b" />
 		<memberTool name="hux_quickdisplay_c" />
-		<memberTool name="hux_select_hierarchy" />
+		<memberTool name="hux_toggle_display_flags" />
 		<memberTool name="hux_parent" />
 		<memberTool name="hux_unparent" />
 		<memberTool name="hux_reset_transform" />
+		<memberTool name="hux_select_hierarchy" />
 		<memberTool name="hux_prep_pickwalking" />
 		<memberTool name="hux_pickwalk_up" />
 		<memberTool name="hux_pickwalk_right" />
@@ -27,25 +26,8 @@
 		<memberTool name="hux_pickwalkadd_right" />
 		<memberTool name="hux_pickwalkadd_down" />
 		<memberTool name="hux_pickwalkadd_left" />
+		<memberTool name="hux_toggle_fullscreen" />
 	</toolshelf>
-	<tool name="hux_toggle_fullscreen" label="Toggle Full Screen" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.toggleFullScreen()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.toggleObjectDisplay()
-			]]>
-		</script>
-	</tool>
 	<tool name="hux_isolate_selection" label="Isolate Selection" icon="houdini_ux.png">
 		<script scriptType="python">
 			<![CDATA[
@@ -91,12 +73,12 @@
 			]]>
 		</script>
 	</tool>
-	<tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
+	<tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
 		<script scriptType="python">
 			<![CDATA[
 			import houdini_ux as hux
 			import imp; imp.reload(hux)
-			hux.selectHierarchy()
+			hux.toggleObjectDisplay()
 			]]>
 		</script>
 	</tool>
@@ -124,6 +106,15 @@
 			import houdini_ux as hux
 			import imp; imp.reload(hux)
 			hux.resetTransform()
+			]]>
+		</script>
+	</tool>
+	<tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
+		<script scriptType="python">
+			<![CDATA[
+			import houdini_ux as hux
+			import imp; imp.reload(hux)
+			hux.selectHierarchy()
 			]]>
 		</script>
 	</tool>
@@ -205,6 +196,15 @@
 			import houdini_ux as hux
 			import imp; imp.reload(hux)
 			hux.pickWalk(mode='left', replace=False)
+			]]>
+		</script>
+	</tool>
+	<tool name="hux_toggle_fullscreen" label="Toggle Full Screen" icon="houdini_ux.png">
+		<script scriptType="python">
+			<![CDATA[
+			import houdini_ux as hux
+			import imp; imp.reload(hux)
+			hux.toggleFullScreen()
 			]]>
 		</script>
 	</tool>
