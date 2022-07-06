@@ -1,211 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shelfDocument>
-	<!--
-	This file contains definitions of shelves, toolbars, and tools.
-	It should not be hand-edited when it is being used by the application.
-	Note, that two definitions of the same element are not allowed in
-	a single file.
-	-->
-	<toolshelf name="houdini_ux" label="houdini-ux">
-		<memberTool name="hux_isolate_selection" />
-		<memberTool name="hux_quickdisplay_clear" />
-		<memberTool name="hux_quickdisplay_a" />
-		<memberTool name="hux_quickdisplay_b" />
-		<memberTool name="hux_quickdisplay_c" />
-		<memberTool name="hux_toggle_display_flags" />
-		<memberTool name="hux_parent" />
-		<memberTool name="hux_unparent" />
-		<memberTool name="hux_reset_transform" />
-		<memberTool name="hux_select_hierarchy" />
-		<memberTool name="hux_prep_pickwalking" />
-		<memberTool name="hux_pickwalk_up" />
-		<memberTool name="hux_pickwalk_right" />
-		<memberTool name="hux_pickwalk_down" />
-		<memberTool name="hux_pickwalk_left" />
-		<memberTool name="hux_pickwalkadd_up" />
-		<memberTool name="hux_pickwalkadd_right" />
-		<memberTool name="hux_pickwalkadd_down" />
-		<memberTool name="hux_pickwalkadd_left" />
-		<memberTool name="hux_toggle_fullscreen" />
-	</toolshelf>
-	<tool name="hux_isolate_selection" label="Isolate Selection" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.isolateSelection()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_quickdisplay_clear" label="QuickDisplay Clear" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.clearQuickDisplay()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_quickdisplay_a" label="QuickDisplay A" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.quickDisplay('A')
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_quickdisplay_b" label="QuickDisplay B" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.quickDisplay('B')
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_quickdisplay_c" label="QuickDisplay C" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.quickDisplay('C')
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.toggleObjectDisplay()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_parent" label="Parent" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.parent()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_unparent" label="Unparent" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.unparent()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_reset_transform" label="Reset Transform" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.resetTransform()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.selectHierarchy()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_prep_pickwalking" label="Prep Pick Walking" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.preparePickwalking()
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalk_up" label="Pick Walk Up" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='up', replace=True)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalk_right" label="Pick Walk Right" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='right', replace=True)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalk_down" label="Pick Walk Down" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='down', replace=True)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalk_left" label="Pick Walk Left" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='left', replace=True)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalkadd_up" label="Pick Walk Add Up" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='up', replace=False)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalkadd_right" label="Pick Walk Add Right" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='right', replace=False)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalkadd_down" label="Pick Walk Add Down" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='down', replace=False)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_pickwalkadd_left" label="Pick Walk Add Left" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.pickWalk(mode='left', replace=False)
-			]]>
-		</script>
-	</tool>
-	<tool name="hux_toggle_fullscreen" label="Toggle Full Screen" icon="houdini_ux.png">
-		<script scriptType="python">
-			<![CDATA[
-			import houdini_ux as hux
-			import imp; imp.reload(hux)
-			hux.toggleFullScreen()
-			]]>
-		</script>
-	</tool>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <toolshelf name="houdini_ux" label="houdini-ux">
+    <memberTool name="hux_isolate_selection"/>
+    <memberTool name="hux_quickdisplay_clear"/>
+    <memberTool name="hux_quickdisplay_a"/>
+    <memberTool name="hux_quickdisplay_b"/>
+    <memberTool name="hux_quickdisplay_c"/>
+    <memberTool name="hux_toggle_display_flags"/>
+    <memberTool name="hux_parent"/>
+    <memberTool name="hux_unparent"/>
+    <memberTool name="hux_reset_transform"/>
+    <memberTool name="hux_select_hierarchy"/>
+    <memberTool name="hux_prep_pickwalking"/>
+    <memberTool name="hux_pickwalk_up"/>
+    <memberTool name="hux_pickwalk_right"/>
+    <memberTool name="hux_pickwalk_down"/>
+    <memberTool name="hux_pickwalk_left"/>
+    <memberTool name="hux_pickwalkadd_up"/>
+    <memberTool name="hux_pickwalkadd_right"/>
+    <memberTool name="hux_pickwalkadd_down"/>
+    <memberTool name="hux_pickwalkadd_left"/>
+    <memberTool name="hux_toggle_fullscreen"/>
+  </toolshelf>
+
+  <tool name="hux_isolate_selection" label="Isolate Selection" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.isolateSelection()
+                        ]]></script>
+  </tool>
+
+  <tool name="hux_quickdisplay_clear" label="QuickDisplay Clear" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.clearQuickDisplay()
+			]]></script>
+  </tool>
+
+  <tool name="hux_quickdisplay_a" label="QuickDisplay A" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.quickDisplay("A")
+			]]></script>
+  </tool>
+
+  <tool name="hux_quickdisplay_b" label="QuickDisplay B" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.quickDisplay("B")
+			]]></script>
+  </tool>
+
+  <tool name="hux_quickdisplay_c" label="QuickDisplay C" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.quickDisplay("C")
+			]]></script>
+  </tool>
+
+  <tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.toggleObjectDisplay()
+			]]></script>
+  </tool>
+
+  <tool name="hux_parent" label="Parent" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.parent()
+			]]></script>
+  </tool>
+
+  <tool name="hux_unparent" label="Unparent" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.unparent()
+			]]></script>
+  </tool>
+
+  <tool name="hux_reset_transform" label="Reset Transform" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.resetTransform()
+			]]></script>
+  </tool>
+
+  <tool name="hux_select_hierarchy" label="Select Hierarchy" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.selectHierarchy()
+			]]></script>
+  </tool>
+
+  <tool name="hux_prep_pickwalking" label="Prep Pick Walking" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.preparePickwalking()
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalk_up" label="Pick Walk Up" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="up", replace=True)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalk_right" label="Pick Walk Right" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="right", replace=True)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalk_down" label="Pick Walk Down" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="down", replace=True)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalk_left" label="Pick Walk Left" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="left", replace=True)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalkadd_up" label="Pick Walk Add Up" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="up", replace=False)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalkadd_right" label="Pick Walk Add Right" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="right", replace=False)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalkadd_down" label="Pick Walk Add Down" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="down", replace=False)
+			]]></script>
+  </tool>
+
+  <tool name="hux_pickwalkadd_left" label="Pick Walk Add Left" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.pickWalk(mode="left", replace=False)
+			]]></script>
+  </tool>
+
+  <tool name="hux_toggle_fullscreen" label="Toggle Full Screen" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.toggleFullScreen()
+			]]></script>
+  </tool>
 </shelfDocument>
