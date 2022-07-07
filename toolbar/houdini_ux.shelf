@@ -7,11 +7,11 @@
 
   <toolshelf name="houdini_ux" label="houdini-ux">
     <memberTool name="hux_isolate_selection"/>
+    <memberTool name="hux_toggle_display_flags"/>
     <memberTool name="hux_quickdisplay_clear"/>
     <memberTool name="hux_quickdisplay_a"/>
     <memberTool name="hux_quickdisplay_b"/>
     <memberTool name="hux_quickdisplay_c"/>
-    <memberTool name="hux_toggle_display_flags"/>
     <memberTool name="hux_parent"/>
     <memberTool name="hux_unparent"/>
     <memberTool name="hux_reset_transform"/>
@@ -35,6 +35,16 @@ import imp
 imp.reload(hux)
 
 hux.isolate_selection()
+      ]]></script>
+  </tool>
+
+  <tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
+    <script scriptType="python"><![CDATA[
+import houdini_ux as hux
+import imp
+imp.reload(hux)
+
+hux.toggle_object_display()
       ]]></script>
   </tool>
 
@@ -75,16 +85,6 @@ import imp
 imp.reload(hux)
 
 hux.quick_display("C")
-      ]]></script>
-  </tool>
-
-  <tool name="hux_toggle_display_flags" label="Toggle Display Flags" icon="houdini_ux.png">
-    <script scriptType="python"><![CDATA[
-import houdini_ux as hux
-import imp
-imp.reload(hux)
-
-hux.toggle_object_display()
       ]]></script>
   </tool>
 
