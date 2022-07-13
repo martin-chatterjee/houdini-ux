@@ -1,0 +1,94 @@
+# -----------------------------------------------------------------------------
+# houdini-ux: Suggested Hotkey Assignments
+#             (minimal, no Pickwalking support)
+# -----------------------------------------------------------------------------
+
+h.tool:hux_isolate_selection    "Isolate Selection" "Shelf Tool: Isolate Selection"  Alt+I
+h.tool:hux_toggle_display_flags "Toggle Display Flags"  "Shelf Tool: Toggle Display Flags"   Alt+H
+
+h.tool:hux_quickdisplay_a   "QuickDisplay A"    "Shelf Tool: QuickDisplay A"     Pad1
+h.tool:hux_quickdisplay_b   "QuickDisplay B"    "Shelf Tool: QuickDisplay B"     Pad2
+h.tool:hux_quickdisplay_c   "QuickDisplay C"    "Shelf Tool: QuickDisplay C"     Pad3
+h.tool:hux_quickdisplay_clear   "QuickDisplay Clear"    "Shelf Tool: QuickDisplay Clear"     Pad0
+
+h.tool:hux_parent   Parent  "Shelf Tool: Parent"     Alt+P
+h.tool:hux_unparent Unparent    "Shelf Tool: Unparent"   Alt+Shift+P
+h.tool:hux_reset_transform  "Reset Transform"   "Shelf Tool: Reset Transform"    Alt+R
+h.tool:hux_select_hierarchy "Select Hierarchy"  "Shelf Tool: Select Hierarchy"   Alt+Ctrl+R
+
+h.tool:hux_toggle_fullscreen    "Toggle Full Screen"    "Shelf Tool: Toggle Full Screen"     F11
+
+
+
+
+# -----------------------------------------------------------------------------
+# houdini-ux: Suggested Pickwalking Hotkey Assignments
+# -----------------------------------------------------------------------------
+
+h.tool:hux_pickwalk_right   "Pick Walk Right"   "Shelf Tool: Pick Walk Right"    RightArrow
+h.tool:hux_pickwalk_down  "Pick Walk Down"  "Shelf Tool: Pick Walk Down"   DownArrow
+h.tool:hux_pickwalk_left    "Pick Walk Left"    "Shelf Tool: Pick Walk Left"     LeftArrow
+h.tool:hux_pickwalk_up  "Pick Walk Up"  "Shelf Tool: Pick Walk Up"   UpArrow
+
+h.tool:hux_pickwalkadd_right    "Pick Walk Add Right"   "Shelf Tool: Pick Walk Add Right"    Shift+RightArrow
+h.tool:hux_pickwalkadd_down "Pick Walk Add Down"    "Shelf Tool: Pick Walk Add Down"     Shift+DownArrow
+h.tool:hux_pickwalkadd_left "Pick Walk Add Left"    "Shelf Tool: Pick Walk Add Left"     Shift+LeftArrow
+h.tool:hux_pickwalkadd_up   "Pick Walk Add Up"  "Shelf Tool: Pick Walk Add Up"   Shift+UpArrow
+
+h.tool:hux_prep_pickwalking "Prep Pick Walking" "Shelf Tool: Prep Pick Walking"  Alt+Ctrl+Shift+P
+
+
+
+
+# -----------------------------------------------------------------------------
+# Moving time control to Maya hotkeys (→ freeing up the cursor keys)
+# -----------------------------------------------------------------------------
+
+h.play_fwd  "Play Forward"  "Playback forward"   Alt+V
+
+h.prev_key  "Jump To Previous Keyframe" "Jump to previous keyframe"  ,
+h.next_key  "Jump To Next Keyframe" "Jump to next keyframe"  .
+
+h.prev_frame    "Step Backward One Frame"   "Step backward one frame"    Alt+,
+h.next_frame    "Step Forward One Frame"    "Step forward one frame"     Alt+.
+
+
+
+
+# -----------------------------------------------------------------------------
+# Vanilla Houdini hotkeys that got modified, so that above hotkeys are free
+# -----------------------------------------------------------------------------
+
+h.pane.wsheet.jump_mark_3   "Jump to Quickmark 3"   "Jumps to the quickmark 3 view"  3
+h.audio_panel   "Audio Panel"   "Open audio panel"
+h.pane.wsheet.jump_mark_2   "Jump to Quickmark 2"   "Jumps to the quickmark 2 view"  2
+h.pane.chedit.to_table  "Switch To Table"   "Switch to table view"   2
+h.pane.imgui.hist.blue  "View Blue Component"   "View blue component"    3
+h.pane.gview.model.seltypeedges "Select Edges"  "Select edges"   3
+h.pane.gview.state.floor.load_quickprev "Load Previous Quickplane"  "Sets the current construction plane to the previous quickplane"     0
+h.pane.imgui.view2d.blue    "View Blue Component"   "View blue component"    3
+h.pane.imgui.view2d.red "View Red Component"    "View red component"     1
+h.pane.imgui.hist.green "View Green Component"  "View green component"   2
+h.pane.chedit.to_dopes  "Switch To Dopesheet"   "Switch to dopesheet view"   3
+h.pane.gview.state.sop.capturelayerpaint.select Select  "Select group"   G
+h.pane.gview.state.view.to_top  "Top Viewport"  "Change viewport type to Top"    2
+h.pane.gview.model.seltypepoints    "Select Points" "Select points"  2
+h.pane.imgui.view2d.green   "View Green Component"  "View green component"   2
+h.pane.gview.state.view.load_quickprev  "Load Previous Quickview"   "Sets the current view to the previous quickview"    0
+h.pane.gview.state.view.to_front    "Front Viewport"    "Change viewport type to Front"  3
+h.pane.imgui.hist.red   "View Red Component"    "View red component"     1
+h.pane.gview.world.selexpandchild   "Select Child Objects"  "Select child objects"   0
+h.pane.chedit.to_graph  "Switch To Graph"   "Switch to graph view"   1
+h.pane.playbar  "Move Playbar Here" "Move playbar to this pane"
+h.pane.chedit.graph.zeroslope   "Set Selected Slopes To Zero"   "Set selected slopes to zero"    0
+h.pane.wsheet.jump_mark_1   "Jump to Quickmark 1"   "Jumps to the quickmark 1 view"  1
+h.python_shell  "Python Shell"  "Open python shell"
+h.pane.gview.state.view.to_persp    "Perspective Viewport"  "Change viewport type to Perspective"    1
+
+h.pane.wsheet.right "Set Current Right" "Set Current right"  Shift+PageDown
+h.pane.wsheet.left  "Set Current Left"  "Set Current left"   Shift+PageUp
+h.pane.gview.left   "Move To Left Sibling"  "Move to left sibling operation"     Shift+PageUp
+h.pane.gview.state.view.first_person_lh.roll_right  "Roll Right"    "Roll right"
+h.pane.gview.right  "Move To Right Sibling" "Move to right sibling operation"    Shift+PageDown
+h.paste Paste   "Paste Selection"    Ctrl+V
+h.pane.gview.state.view.first_person_lh.roll_left   "Roll Left" "Roll left"

@@ -1,81 +1,47 @@
 
-# ![headline](logo.png)
-
-<br/>
-<br/>
-
-### A collection of **Houdini UX Helpers**:
-
-- **toggleFullScreen**:
-  Toggles the Full Screen state of the Houdini Main Window.
-
-- **toggleObjectDisplay**:
-  Toggles the visibility of all selected Objects.
-
-- **IsolateSelection**:
-  Mimics the Maya/Softimage "Isolate Selection" workflow at the Objects level.
-
-- **QuickDisplay**:
-  Let's you store and load active/visible nodes in SOP's.<br/>
-  This is intended to sort of mimic the UX behaviour of **Nuke's viewer**
-  shortcuts. (--> 1, 2, 3)
-
-- **parent** & **unparent** selected objects
-
-- **reset Transform** of selected objects
-
-- **pickwalking**  (up, down, left, right)
+# ![headline](docs/graphics/logo.png)
 
 
-<br/>
 
-### Installation:
+#### Installation instructions and Documentation:
 
-- copy ``packages/houdini_ux.json`` into your ``$HFS/packages`` Folder.
-- update the **path** inside the ``houdini_ux.json`` so that it points to this repo.
-- start Houdini
-- verify that the package got picked up:
-    - in a **Python Shell**:  ``import houdini_ux; print(houdini_ux)``
-- display the **houdiniUX** shelf
-- add **Hotkeys** to all shelf items.
+- https://martin-chatterjee.github.io/houdini-ux/
 
 
-<br/>
 
-### My Hotkey suggestions:
+## What's this about?
 
-
-**Move these Vanilla Hotkeys for Animation Control:**
-
-- Play Forward                UpArrow     -->     Alt+V
-- Step Forward One            RightArrow  -->     Alt+.
-- Step Backward One           LeftArrow   -->     Alt+,
-- Jump To Previous Keyframe               -->     ,
-- Jump To Next Keyframe                   -->     .
+**Houdini UX** *(pronounced`"hoodeenee-yoo-ex"`)* is a **collection of Usability helpers** that I've been missing in Houdini, such as:
 
 
-**Then set houdini-ux hotkeys (these are my suggestions):**
 
-- **toggleFullScreen**      : F11
+### Isolate Selection
 
-- **toggleDisplayFlags**    : Alt+H
-- **isolateSelection**      : Alt+I
+- Mimics the Maya/Softimage "Isolate Selection" workflow at the Objects level.
+  ![isolate-selection](docs/graphics/isolate-selection.gif)
 
-- **quickDisplay Clear**    : Ctrl+`
-- **quickDisplay A**        : Ctrl+F1
-- **quickDisplay B**        : Ctrl+F2
-- **quickDisplay C**        : Ctrl+F3
 
-- **parent**                : Alt+P
-- **unparent**              : Shift+P
-- **reset Transform**       : Alt+R
 
-- **Pick Walk up**               : Up
-- **Pick Walk down**             : Down
-- **Pick Walk left**             : Left
-- **Pick Walk right**            : Right
+### Toggle Object Display
 
-- **Pick Walk Add up**               : Shift+Up
-- **Pick Walk Add down**             : Shift+Down
-- **Pick Walk Add left**             : Shift+Left
-- **Pick Walk Add right**            : Shift+Right
+- Toggles the visibility state of selected Objects:
+  ![toggle-visibility](docs/graphics/toggle-visibility.gif)
+
+
+
+### Quick Display
+
+- Let's you **store** and **load active/visible nodes** in SOP's.<br/>
+  This is intended to sort of mimic the UX behaviour of **Nuke's viewer** shortcuts. 
+  _(→ `1`, `2`, `3`)_
+  ![quick-display](docs/graphics/quick-display.gif)
+
+
+
+### And a few more:
+
+- **Parent** & **Unparent** selected objects.
+
+- **Reset Transform** of selected objects.
+- **Pickwalking** and **Hierarchy walking**.  (→ `up`, `down`, `left`, `right`)
+- **Toggle FullScreen**.
