@@ -2,3 +2,5 @@
 __pycache__/
 *.py[cod]
 
+# Jekyll local build
+docs/_site

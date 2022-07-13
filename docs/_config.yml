@@ -1,1 +1,4 @@
-theme: jekyll-theme-cayman
+title: Houdini UX
+logo: "/graphics/logo.png"
+
+remote_theme: just-the-docs/just-the-docs
