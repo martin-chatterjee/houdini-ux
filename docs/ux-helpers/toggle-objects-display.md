@@ -9,4 +9,16 @@ nav_order: 2
 
 # Toggle Objects Display
 
-## `#TODO` 😇
+---
+### → Demo Hotkey:  `Alt + H`
+
+---
+Toggles the individual **visibility states** of selected Objects:
+
+![isolate-selection](../assets/images/toggle-visibility.gif)
+
+- In contrast to [Isolate Selection](../isolate-selection/) this actually **toggles the individual display flags** of selected Objects.
+
+- Naturally this only works in **Objects** mode.
+
+- Let's you easily `'A/B'` things by **multi-selecting one visible and one hidden object**, and repeatedly hitting `Alt+H`.

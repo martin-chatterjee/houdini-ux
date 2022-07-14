@@ -9,4 +9,11 @@ nav_order: 8
 
 # Toggle Fullscreen
 
-## `#TODO` 😇
+---
+### → Demo Hotkey:  `F11`
+
+---
+
+Toggles Houdini's **Full Screen** state.
+
+I find this helpful when having to work on a laptop without sufficient screen resolution.
