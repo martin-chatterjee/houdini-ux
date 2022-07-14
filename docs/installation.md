@@ -76,6 +76,8 @@ houdini-ux-demo (with pickwalking)
 ---
 
 - Now **activate** the `houdini-ux-demo (minimal)` **demo keymap**.
+- Finally **restart Houdini** for good measure.\
+  _(Sometimes existing shelves and keymaps get confused otherwise...)_
 
 <br/>
 
