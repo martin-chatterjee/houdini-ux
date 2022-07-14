@@ -19,13 +19,18 @@ nav_order: 1
 
 - **Unzip** it to anywhere you want and **rename** the top folder back to `houdini-ux`.
 
-_(→ Or just **clone the repo** of course, if you are git-savvy and prefer that...)_
+_(→ Or just [**clone the repo**](https://github.com/martin-chatterjee/houdini-ux) of course, if you are git-savvy and prefer that...)_
 
 <br/>
 
 ## 2. Copy and adjust package file.
 
-- **Copy** ``package_template/houdini_ux.json`` into your **home folder**: `$HOUDINI_USER_PREF_DIR/packages`.\
+- **Copy** ``package_template/houdini_ux.json`` into the `packages/` directory within your Houdini **home folder**: 
+
+    ```
+    $HOUDINI_USER_PREF_DIR/packages
+    ```
+
    _(→ Or into [any other folder](https://www.sidefx.com/docs/houdini/ref/plugins.html#using_packages) where **Houdini package files** will get picked up.)_
    
 - **Update** the **`HUX_ROOT`** env variable defined inside this ``houdini_ux.json`` file so that it **points to your `houdini-ux` location**:
@@ -70,8 +75,7 @@ houdini-ux-demo (with pickwalking)
 
 ---
 
-- Now **activate one** of the **demo keymaps**.\
-  _(If in doubt, start with `houdini-ux-demo (minimal)`.)_
+- Now **activate** the `houdini-ux-demo (minimal)` **demo keymap**.
 
 <br/>
 

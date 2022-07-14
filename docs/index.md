@@ -9,7 +9,7 @@ layout: default
 
 ## What's this about?
 
-[**Houdini UX**] *(pronounced`"hoodeenee-yoo-ex"`)* is a **collection of Usability helpers** that I've been missing in Houdini, such as:
+**Houdini UX** *(pronounced`"hoodeenee-yoo-ex"`)* is a **collection of Usability helpers** that I've been missing in Houdini, such as:
 
 
 ### Isolate Selection
@@ -35,7 +35,6 @@ layout: default
 ### And a few more:
 
 - **Parent** & **Unparent** selected objects.
-
 - **Reset Transform** of selected objects.
 - **Pickwalking** and **Hierarchy walking**.  (→ `up`, `down`, `left`, `right`)
 - **Toggle FullScreen**.
