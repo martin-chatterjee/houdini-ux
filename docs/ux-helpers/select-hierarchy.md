@@ -9,4 +9,9 @@ nav_order: 6
 
 # Select Hierarchy
 
-## `#TODO` 😇
+---
+### → Demo Hotkey:  `Alt + Ctrl + R`
+
+---
+
+**Multi-selects all nodes in object-level hierarchies**, based in the current object selection.
