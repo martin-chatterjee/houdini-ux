@@ -1,4 +1,10 @@
 title: Houdini UX
-logo: "/graphics/logo.png"
+logo: "assets/images/logo.png"
 
 remote_theme: just-the-docs/just-the-docs
+
+# Aux links for the upper right navigation
+aux_links:
+  "Houdini UX on GitHub":
+    - "https://github.com/martin-chatterjee/houdini-ux"
+aux_links_new_tab: true
